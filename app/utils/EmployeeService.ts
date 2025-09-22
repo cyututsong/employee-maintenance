@@ -16,7 +16,6 @@ export function deleteEmployee(selectedEmployee : string) {
 
     localStorage.setItem("employees", JSON.stringify(updatedEmployees));
     console.log(`Deleted employee with fname: ${selectedEmployee}`);
-
 }
 
 
@@ -36,7 +35,7 @@ export function selectEmployee(fname: any){
 
     const storedEmployees = localStorage.getItem("employees");
  
-    if (!storedEmployees || storedEmployees === "[]"){ // Checking if the storedEmployees is existed in localstorage and not empty in local storage exit if true
+    if (!storedEmployees || storedEmployees === "[]"){ // Checking if the storedEmployees is existed in localstorage and not empty in local storage exit if its true
         return  console.log("No employees found in localStorage.");
     }
 
