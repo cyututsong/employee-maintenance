@@ -11,7 +11,7 @@ export function deleteEmployee(selectedEmployee : string) {
     const employees = JSON.parse(storedEmployees);
 
     const updatedEmployees = employees.filter(
-      (emp: any) => emp.fname !== selectedEmployee
+      (emp: any) => emp.email !== selectedEmployee
     );
 
     localStorage.setItem("employees", JSON.stringify(updatedEmployees));
@@ -37,6 +37,7 @@ export function saveFields(formData: {fname: string; lname: string; email: strin
   return employees;
 
 }
+
 
 
 export function selectEmployee(fname: any){
