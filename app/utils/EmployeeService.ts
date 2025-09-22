@@ -21,10 +21,18 @@ export function deleteEmployee(selectedEmployee : string) {
 
 // Save employee data into localStorage
 
-export function saveFields(formData: {fname: string; lname: string; email: string; phone: string; dob: string; position: string}) {
+export function saveFields(formData: {fname: string; lname: string; email: string; phone: string; dob: string; position: string}, flag: string) {
 
-  const employees = JSON.parse(localStorage.getItem("employees") || "[]");
-  employees.push(formData);
+  let employees = JSON.parse(localStorage.getItem("employees") || "[]");
+
+  if(flag === "Add") {
+    employees.push(formData);
+  } else {
+      employees = employees.map((emp: any) =>
+        emp.email === formData.email ? { ...emp, ...formData } : emp
+     );
+  }
+  //console.log(flag);
   localStorage.setItem("employees", JSON.stringify(employees));
   return employees;
 

@@ -5,6 +5,9 @@ import { deleteEmployee, saveFields, loadEmployees, selectEmployee } from "../ut
 
 export default function EmployeeMaintenance() {
 
+
+    const[flag, setFlag] = useState<"Add" | "Update">("Add"); // this code -> let flag = "Add" won't work it reset the value to add even you hit update;
+
     const [formData, setFormData] = useState({
         fname: "",
         lname: "",
@@ -28,7 +31,7 @@ export default function EmployeeMaintenance() {
 
 
     const handleDelete = () => {
-        const selectedEmployee = formData.fname;
+        const selectedEmployee = formData.email;
         deleteEmployee(selectedEmployee);
         setEmployees(loadEmployees());
         setFormData({ fname: "", lname: "", email: "", phone: "", dob: "", position: "" }); // clear form
@@ -52,11 +55,21 @@ export default function EmployeeMaintenance() {
 
     };
 
+    const handleUpdate = () => {
+        setFlag("Update");
+        setIsDisabled(false);
+    }
 
+    const handleAdd = () => {
+        setFlag("Add");
+        setIsDisabled(false);      
+    }
   
     // Save employee and refresh list
     const handleSave = () => {
-        const updatedEmployees = saveFields(formData); // calling savFields function from utils
+        console.log(flag);
+        const addEmployees = saveFields(formData, flag); // calling savFields function from utils
+  
         setEmployees(loadEmployees()); // refresh list
         setFormData({ fname: "", lname: "", email: "", phone: "", dob: "", position: "" }); // clear form
         setIsDisabled(true);
@@ -112,8 +125,8 @@ export default function EmployeeMaintenance() {
 
 
         <div className="grid grid-cols-4 gap-4">   
-            <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => setIsDisabled(false)}>Add</button>
-            <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => setIsDisabled(false)}>Update</button>
+            <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={handleAdd}>Add</button>
+            <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={handleUpdate}>Update</button>
             <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleDelete()}>Delete</button>
             <button className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600" onClick={() => handleSave()}>Save</button>
         </div>
