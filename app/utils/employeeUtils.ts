@@ -1,10 +1,10 @@
 const Member = [
-  { firstname: "Rodney", Lastname: "Ramos", age: 34 },
-  { firstname: "Claire", Lastname: "Crisologo", age: 33 },
-  { firstname: "Claire", Lastname: "Ramos", age: 28 },
-  { firstname: "Callie", Lastname: "Ramos", age: 5 },
-  { firstname: "Raizel", Lastname: "Crisologo", age: 28 },
-  { firstname: "Jude", Lastname: "Crisologo", age: 28 }
+  { id: 1, firstname: "Rodney", Lastname: "Ramos", age: 34 },
+  { id: 2,firstname: "Claire", Lastname: "Crisologo", age: 33 },
+  { id: 3,firstname: "Claire", Lastname: "Ramos", age: 28 },
+  { id: 4,firstname: "Callie", Lastname: "Ramos", age: 5 },
+  { id: 5,firstname: "Raizel", Lastname: "Crisologo", age: 28 },
+  { id: 6,firstname: "Jude", Lastname: "Crisologo", age: 28 }
 ];
 
 type Employee = {
