@@ -17,6 +17,8 @@ export default function EmployeeMaintenance() {
         position: ""
     });
 
+    
+
     const [isDisabled, setIsDisabled] = useState(true);
 
     const [employees, setEmployees] = useState<any[]>([]);
@@ -69,7 +71,6 @@ export default function EmployeeMaintenance() {
     const handleSave = () => {
         console.log(flag);
         const addEmployees = saveFields(formData, flag); // calling savFields function from utils
-  
         setEmployees(loadEmployees()); // refresh list
         setFormData({ fname: "", lname: "", email: "", phone: "", dob: "", position: "" }); // clear form
         setIsDisabled(true);
